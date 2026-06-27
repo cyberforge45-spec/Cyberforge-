@@ -4,7 +4,7 @@ Welcome to **Cyberforge**, a collaborative community dedicated to developing cut
 
 ## 🎯 About Us
 
-Cyberforge is a vibrant Discord community where cybersecurity enthusiasts, ethical hackers, and programmers collaborate to create innovative security tools. Whether you're an experienced developer or just starting your cybersecurity journey, we're looking for talented programmers to join our mission.
+Cyberforge is a vibrant Discord community where cybersecurity enthusiasts, hackers, and programmers collaborate to create innovative security tools. Whether you're an experienced developer or just starting your cybersecurity journey, we're looking for talented programmers to join our mission.
 
 ## 🚀 What We Do
 
@@ -38,7 +38,7 @@ We're actively recruiting programmers to contribute to our tool development proj
 
 ### Join Discord Server
 
-**👉 [Join Cyberforge Discord Community](https://discord.gg/bdNyFFf4C)**
+**👉 [Join Cyberforge Discord Community]([https://discord.gg/XzpsBWXAt])**
 
 In our Discord server, you'll find:
 - **#announcements** - Project updates and community news
@@ -50,7 +50,7 @@ In our Discord server, you'll find:
 
 ## 📋 Getting Started
 
-1. **Join our Discord**: https://discord.gg/bdNyFFf4C
+1. **Join our Discord**: [https://discord.gg/AsWSbdSvs]
 2. **Introduce yourself** in the welcome channel
 3. **Browse active projects** in the tool-development channels
 4. **Pick a project** that interests you
@@ -66,7 +66,7 @@ In our Discord server, you'll find:
 
 ## 🔗 Quick Links
 
-- **Discord Invite**: https://discord.gg/bdNyFFf4C
+- **Discord Invite**: https://discord.gg/AsWSbdSvs
 - **Contributing**: See individual project repositories for contribution guidelines
 - **Code of Conduct**: Be respectful, collaborative, and ethical in all interactions
 
@@ -83,7 +83,7 @@ We strictly prohibit any use of our tools for:
 - Malicious activities
 - Illegal purposes
 
-All contributors must adhere to ethical hacking principles and applicable laws.
+
 
 ## 🌟 Featured Projects
 
@@ -91,14 +91,14 @@ Check out the projects we're currently working on:
 - Security tool frameworks
 - Network analysis utilities
 - Penetration testing suites
-- Cryptographic libraries
+- MultiTools
 - Vulnerability scanners
 
 *More projects coming soon! Join Discord to learn about current initiatives.*
 
 ## 💬 Connect With Us
 
-- **Discord**: https://discord.gg/bdNyFFf4C
+- **Discord**: https://discord.gg/AsWSbdSvs
 - **GitHub**: Follow for tool releases and updates
 
 ---
@@ -111,4 +111,4 @@ Projects within Cyberforge are shared under various open-source licenses (MIT, G
 
 **Ready to make an impact in cybersecurity? Join Cyberforge today! 🚀**
 
-**[Join Our Discord Server](https://discord.gg/bdNyFFf4C)**
+**[Join Our Discord Server](https://discord.gg/AsWSbdSvs)**
