@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Members - Cyberforge</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .animated-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%23302b63" width="100" height="100"/><circle cx="20" cy="20" r="2" fill="%2324243e"/></svg>');
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        header {
+            padding: 2rem;
+            text-align: center;
+            animation: slideDown 0.8s ease-out;
+            border-bottom: 2px solid rgba(0, 255, 136, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #00ccff;
+            font-size: 1.1rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+            background: rgba(0, 255, 136, 0.05);
+            border-bottom: 2px solid rgba(0, 255, 136, 0.1);
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #00ff88;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #00ff88;
+            color: #0f0c29;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #00ff88;
+            text-align: center;
+            margin: 3rem 0 2rem 0;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .member-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            animation: slideUp 0.6s ease-out backwards;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .member-card:nth-child(1) { animation-delay: 0.1s; }
+        .member-card:nth-child(2) { animation-delay: 0.2s; }
+        .member-card:nth-child(3) { animation-delay: 0.3s; }
+        .member-card:nth-child(4) { animation-delay: 0.4s; }
+        .member-card:nth-child(5) { animation-delay: 0.5s; }
+        .member-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00ff88, #00ccff);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .member-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .member-card:hover {
+            border-color: #00ff88;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+            transform: translateY(-10px);
+        }
+
+        .member-avatar {
+            font-size: 4rem;
+            padding: 2rem 0 1rem 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .member-card:hover .member-avatar {
+            animation: bounce 0.6s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            color: #00ff88;
+            margin: 0.5rem 0;
+            font-weight: bold;
+        }
+
+        .member-role {
+            color: #00ccff;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .member-content {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+        }
+
+        .member-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .skill-badge {
+            background: rgba(0, 204, 255, 0.1);
+            border: 1px solid rgba(0, 204, 255, 0.3);
+            color: #00ccff;
+            padding: 0.3rem 0.7rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background: rgba(0, 204, 255, 0.2);
+            border-color: #00ccff;
+            box-shadow: 0 0 10px rgba(0, 204, 255, 0.3);
+        }
+
+        .member-bio {
+            color: #ddd;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .member-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .member-link {
+            color: #00ff88;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .member-link:hover {
+            color: #00ccff;
+            transform: scale(1.2);
+        }
+
+        .join-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(0, 255, 136, 0.05);
+            border: 2px solid rgba(0, 255, 136, 0.2);
+            border-radius: 10px;
+            margin: 3rem 0;
+            animation: slideUp 0.8s ease-out 0.3s backwards;
+        }
+
+        .join-section h3 {
+            color: #00ff88;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .join-section p {
+            color: #ddd;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            color: #0f0c29;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.8);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid rgba(0, 255, 136, 0.2);
+            margin-top: 4rem;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f0c29;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #00ff88;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00ccff;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <header>
+        <h1>👥 Team Members</h1>
+        <p>Meet the amazing people building Cyberforge</p>
+    </header>
+
+    <nav>
+        <a href="index.html">← Back to Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="https://discord.gg/AsWSbdSvs" target="_blank">🎮 Join Discord</a>
+    </nav>
+
+    <div class="container">
+        <div class="team-grid" id="teamGrid">
+            <!-- Team members will be inserted here by JavaScript -->
+        </div>
+
+        <div class="join-section">
+            <h3>🚀 Become Part of the Team</h3>
+            <p>Join our growing community of cybersecurity professionals and contribute to exciting projects!</p>
+            <a href="https://discord.gg/AsWSbdSvs" target="_blank" class="cta-button">
+                Join Cyberforge Discord →
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Cyberforge Community. All rights reserved.</p>
+        <p style="margin-top: 1rem;">
+            <a href="https://discord.gg/AsWSbdSvs" style="color: #00ccff; text-decoration: none;">Join our Discord</a> to become a member
+        </p>
+    </footer>
+
+    <script>
+        const teamMembers = [
+            {
+                id: 1,
+                avatar: '👨‍💻',
+                name: 'Alex Chen',
+                role: 'Founder & Lead Developer',
+                bio: 'Cybersecurity expert with 10+ years of experience',
+                skills: ['Python', 'Cryptography', 'Leadership'],
+                github: 'https://github.com',
+                linkedin: 'https://linkedin.com',
+            },
+            {
+                id: 2,
+                avatar: '👩‍💻',
+                name: 'Sarah Johnson',
+                role: 'Security Engineer',
+                bio: 'Specializing in network security and penetration testing',
+                skills: ['Network Security', 'Rust', 'Penetration Testing'],
+                github: 'https://github.com',
+                linkedin: 'https://linkedin.com',
+            },
+            {
+                id: 3,
+                avatar: '🧑‍💻',
+                name: 'Mike Rodriguez',
+                role: 'Full Stack Developer',
+                bio: 'Building web-based security tools and dashboards',
+                skills: ['JavaScript', 'React', 'Node.js'],
+                github: 'https://github.com',
+                linkedin: 'https://linkedin.com',
+            },
+            {
+                id: 4,
+                avatar: '👩‍🔬',
+                name: 'Emily Watson',
+                role: 'Malware Analyst',
+                bio: 'Expert in threat analysis and reverse engineering',
+                skills: ['C++', 'Assembly', 'Malware Analysis'],
+                github: 'https://github.com',
+                linkedin: 'https://linkedin.com',
+            },
+            {
+                id: 5,
+                avatar: '👨‍🔧',
+                name: 'James Park',
+                role: 'DevOps & Infrastructure',
+                bio: 'Building scalable and secure infrastructure',
+                skills: ['Docker', 'Kubernetes', 'AWS'],
+                github: 'https://github.com',
+                linkedin: 'https://linkedin.com',
+            },
+            {
+                id: 6,
+                avatar: '👩‍🏫',
+                name: 'Lisa Anderson',
+                role: 'Community Manager',
+                bio: 'Leading our amazing Discord community',
+                skills: ['Community Building', 'Teaching', 'Mentoring'],
+                github: 'https://github.com',
+                linkedin: 'https://linkedin.com',
+            },
+        ];
+
+        const teamGrid = document.getElementById('teamGrid');
+
+        function renderTeam() {
+            teamMembers.forEach((member, index) => {
+                const card = document.createElement('div');
+                card.className = 'member-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                card.innerHTML = `
+                    <div class="member-avatar">${member.avatar}</div>
+                    <div class="member-content">
+                        <h3 class="member-name">${member.name}</h3>
+                        <p class="member-role">${member.role}</p>
+                        <p class="member-bio">${member.bio}</p>
+                        <div class="member-skills">
+                            ${member.skills.map(skill => `<span class="skill-badge">${skill}</span>`).join('')}
+                        </div>
+                        <div class="member-links">
+                            <a href="${member.github}" target="_blank" class="member-link" title="GitHub">🐙</a>
+                            <a href="${member.linkedin}" target="_blank" class="member-link" title="LinkedIn">💼</a>
+                        </div>
+                    </div>
+                `;
+                
+                teamGrid.appendChild(card);
+            });
+        }
+
+        // Initial render
+        renderTeam();
+
+        // Parallax effect
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 2 - 1;
+            const y = (e.clientY / window.innerHeight) * 2 - 1;
+            
+            const parallax = document.querySelector('.animated-bg');
+            if (parallax) {
+                parallax.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+            }
+        });
+
+        // Particle effect
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.cta-button') || e.target.closest('nav a')) return;
+            
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.left = e.clientX + 'px';
+            particle.style.top = e.clientY + 'px';
+            particle.style.width = '10px';
+            particle.style.height = '10px';
+            particle.style.background = '#00ff88';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.boxShadow = '0 0 10px #00ff88';
+            particle.style.animation = 'particleFloat 1s ease-out forwards';
+            
+            if (!document.querySelector('style[data-particles]')) {
+                const style = document.createElement('style');
+                style.setAttribute('data-particles', 'true');
+                style.textContent = `
+                    @keyframes particleFloat {
+                        to {
+                            transform: translateY(-100px);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 1000);
+        });
+    </script>
+</body>
+</html>
