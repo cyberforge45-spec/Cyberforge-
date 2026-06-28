@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Projects - Cyberforge</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .animated-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%23302b63" width="100" height="100"/><circle cx="20" cy="20" r="2" fill="%2324243e"/></svg>');
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        header {
+            padding: 2rem;
+            text-align: center;
+            animation: slideDown 0.8s ease-out;
+            border-bottom: 2px solid rgba(0, 255, 136, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #00ccff;
+            font-size: 1.1rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+            background: rgba(0, 255, 136, 0.05);
+            border-bottom: 2px solid rgba(0, 255, 136, 0.1);
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #00ff88;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #00ff88;
+            color: #0f0c29;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #00ff88;
+            text-align: center;
+            margin: 3rem 0 2rem 0;
+            animation: slideIn 0.8s ease-out;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #00ff88, #00ccff);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            animation: slideUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            color: #00ff88;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #00ff88;
+            color: #0f0c29;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+            transform: scale(1.05);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            animation: slideUp 0.6s ease-out backwards;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+        .project-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00ff88, #00ccff);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            border-color: #00ff88;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4), inset 0 0 30px rgba(0, 255, 136, 0.05);
+            transform: translateY(-10px);
+        }
+
+        .project-header {
+            padding: 2rem;
+            background: rgba(0, 255, 136, 0.05);
+            border-bottom: 2px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: spin 4s linear infinite;
+        }
+
+        .project-card:hover .project-icon {
+            animation: bounce 0.6s ease-in-out;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: #00ff88;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            background: rgba(0, 204, 255, 0.2);
+            border: 1px solid #00ccff;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #00ccff;
+            margin-top: 0.5rem;
+        }
+
+        .project-status.active {
+            background: rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
+            color: #00ff88;
+        }
+
+        .project-status.planning {
+            background: rgba(255, 165, 0, 0.2);
+            border-color: #ffa500;
+            color: #ffa500;
+        }
+
+        .project-body {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-description {
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+            margin-top: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-badge {
+            background: rgba(0, 204, 255, 0.1);
+            border: 1px solid rgba(0, 204, 255, 0.3);
+            color: #00ccff;
+            padding: 0.3rem 0.7rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: rgba(0, 204, 255, 0.2);
+            border-color: #00ccff;
+            box-shadow: 0 0 10px rgba(0, 204, 255, 0.3);
+        }
+
+        .project-contributors {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            color: #0f0c29;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .project-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .stat-box {
+            background: rgba(0, 255, 136, 0.05);
+            border: 2px solid rgba(0, 255, 136, 0.2);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: slideUp 0.6s ease-out backwards;
+        }
+
+        .stat-box:nth-child(1) { animation-delay: 0.2s; }
+        .stat-box:nth-child(2) { animation-delay: 0.3s; }
+        .stat-box:nth-child(3) { animation-delay: 0.4s; }
+
+        .stat-box:hover {
+            border-color: #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #00ccff;
+            margin-top: 0.5rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #888;
+            font-size: 1.1rem;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid rgba(0, 255, 136, 0.2);
+            margin-top: 4rem;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .filter-buttons {
+                flex-direction: column;
+            }
+            .filter-btn {
+                width: 100%;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f0c29;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #00ff88;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00ccff;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <header>
+        <h1>🎯 Featured Projects</h1>
+        <p>Explore our active and upcoming cybersecurity tools and frameworks</p>
+    </header>
+
+    <nav>
+        <a href="index.html">← Back to Home</a>
+        <a href="team.html">Team Members</a>
+        <a href="https://discord.gg/AsWSbdSvs" target="_blank">🎮 Join Discord</a>
+    </nav>
+
+    <div class="container">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="security">Security Tools</button>
+            <button class="filter-btn" data-filter="framework">Frameworks</button>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Active Projects</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Contributors</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">500K+</div>
+                <div class="stat-label">Lines of Code</div>
+            </div>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Projects will be inserted here by JavaScript -->
+        </div>
+
+        <div id="noResults" class="no-results" style="display: none;">
+            No projects found for this category. Check back soon!
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Cyberforge Community. All rights reserved.</p>
+        <p style="margin-top: 1rem;">
+            <a href="https://discord.gg/AsWSbdSvs" style="color: #00ccff; text-decoration: none;">Join our Discord</a> to contribute
+        </p>
+    </footer>
+
+    <script>
+        const projects = [
+            {
+                id: 1,
+                icon: '🔐',
+                title: 'CyberVault',
+                category: ['security', 'active'],
+                status: 'Active Development',
+                statusType: 'active',
+                description: 'Advanced encryption toolkit for secure data storage and transmission with military-grade algorithms.',
+                technologies: ['Python', 'Cryptography', 'C++'],
+                contributors: 12,
+                link: 'https://github.com/cyberforge45-spec',
+            },
+            {
+                id: 2,
+                icon: '🔍',
+                title: 'NetworkSentry',
+                category: ['security', 'active'],
+                status: 'Active Development',
+                statusType: 'active',
+                description: 'Real-time network monitoring and packet analysis tool for detecting anomalies and threats.',
+                technologies: ['Python', 'Network Analysis', 'JavaScript'],
+                contributors: 8,
+                link: 'https://github.com/cyberforge45-spec',
+            },
+            {
+                id: 3,
+                icon: '🎯',
+                title: 'PenTest Pro Framework',
+                category: ['framework', 'active'],
+                status: 'Active Development',
+                statusType: 'active',
+                description: 'Comprehensive penetration testing framework for authorized security assessments and vulnerability scanning.',
+                technologies: ['Python', 'Rust', 'Security Testing'],
+                contributors: 15,
+                link: 'https://github.com/cyberforge45-spec',
+            },
+            {
+                id: 4,
+                icon: '📊',
+                title: 'SecurityDashboard',
+                category: ['framework', 'active'],
+                status: 'Active Development',
+                statusType: 'active',
+                description: 'Unified security monitoring dashboard with real-time analytics and threat intelligence integration.',
+                technologies: ['JavaScript', 'React', 'Node.js', 'Analytics'],
+                contributors: 10,
+                link: 'https://github.com/cyberforge45-spec',
+            },
+            {
+                id: 5,
+                icon: '🔬',
+                title: 'MalwareAnalyzer',
+                category: ['security'],
+                status: 'Planning',
+                statusType: 'planning',
+                description: 'Advanced malware analysis platform with behavioral tracking and threat signature generation.',
+                technologies: ['C++', 'Assembly', 'Machine Learning'],
+                contributors: 5,
+                link: 'https://github.com/cyberforge45-spec',
+            },
+            {
+                id: 6,
+                icon: '🌐',
+                title: 'WebSecTools',
+                category: ['security', 'active'],
+                status: 'Active Development',
+                statusType: 'active',
+                description: 'Comprehensive web application security testing toolkit with automated vulnerability detection.',
+                technologies: ['JavaScript', 'Python', 'Web Security'],
+                contributors: 9,
+                link: 'https://github.com/cyberforge45-spec',
+            },
+        ];
+
+        const projectsGrid = document.getElementById('projectsGrid');
+        const noResults = document.getElementById('noResults');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        function renderProjects(filter = 'all') {
+            projectsGrid.innerHTML = '';
+            let filtered = projects;
+
+            if (filter !== 'all') {
+                filtered = projects.filter(p => p.category.includes(filter));
+            }
+
+            if (filtered.length === 0) {
+                projectsGrid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            projectsGrid.style.display = 'grid';
+            noResults.style.display = 'none';
+
+            filtered.forEach((project, index) => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                card.innerHTML = `
+                    <div class="project-header">
+                        <div class="project-icon">${project.icon}</div>
+                        <h3 class="project-title">${project.title}</h3>
+                        <span class="project-status ${project.statusType}">${project.status}</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">${project.description}</p>
+                        <div class="project-tech">
+                            ${project.technologies.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-contributors">👥 ${project.contributors} contributors</span>
+                        </div>
+                        <a href="${project.link}" target="_blank" class="project-link">Learn More →</a>
+                    </div>
+                `;
+                
+                projectsGrid.appendChild(card);
+            });
+        }
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderProjects(btn.dataset.filter);
+            });
+        });
+
+        // Initial render
+        renderProjects();
+
+        // Parallax effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 2 - 1;
+            const y = (e.clientY / window.innerHeight) * 2 - 1;
+            
+            const parallax = document.querySelector('.animated-bg');
+            if (parallax) {
+                parallax.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+            }
+        });
+
+        // Particle effect
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.filter-btn') || e.target.closest('.project-link')) return;
+            
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.left = e.clientX + 'px';
+            particle.style.top = e.clientY + 'px';
+            particle.style.width = '10px';
+            particle.style.height = '10px';
+            particle.style.background = '#00ff88';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.boxShadow = '0 0 10px #00ff88';
+            particle.style.animation = 'particleFloat 1s ease-out forwards';
+            
+            if (!document.querySelector('style[data-particles]')) {
+                const style = document.createElement('style');
+                style.setAttribute('data-particles', 'true');
+                style.textContent = `
+                    @keyframes particleFloat {
+                        to {
+                            transform: translateY(-100px);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 1000);
+        });
+    </script>
+</body>
+</html>
