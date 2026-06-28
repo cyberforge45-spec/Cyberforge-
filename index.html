@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛡️ Cyberforge - Cybersecurity Tools Community</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%23302b63" width="100" height="100"/><circle cx="20" cy="20" r="2" fill="%2324243e"/></svg>');
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        /* Floating Shield Animation */
+        .shield-icon {
+            font-size: 4rem;
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Header */
+        header {
+            padding: 3rem 2rem;
+            text-align: center;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glitch 3s ease-in-out infinite;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        @keyframes glitch {
+            0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+            50% { text-shadow: 0 0 40px rgba(0, 204, 255, 0.6); }
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #00ccff;
+            animation: fadeIn 1.2s ease-out;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: #888;
+            margin-top: 1rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            padding: 0 2rem;
+        }
+
+        nav a {
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid #00ff88;
+            color: #00ff88;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+            animation: navFadeIn 0.6s ease-out backwards;
+        }
+
+        @keyframes navFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav a:nth-child(1) { animation-delay: 0.3s; }
+        nav a:nth-child(2) { animation-delay: 0.4s; }
+        nav a:nth-child(3) { animation-delay: 0.5s; }
+        nav a:nth-child(4) { animation-delay: 0.6s; }
+
+        nav a:hover {
+            background: #00ff88;
+            color: #0f0c29;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Headers */
+        .section-title {
+            font-size: 2.5rem;
+            color: #00ff88;
+            text-align: center;
+            margin: 3rem 0 2rem 0;
+            animation: slideIn 0.8s ease-out;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #00ff88, #00ccff);
+            margin: 1rem auto;
+            border-radius: 2px;
+            animation: expandWidth 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 100px; }
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        /* Animated Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 10px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            animation: slideUp 0.8s ease-out forwards;
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
+        }
+
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+        .card:nth-child(4) { animation-delay: 0.8s; }
+        .card:nth-child(5) { animation-delay: 1s; }
+        .card:nth-child(6) { animation-delay: 1.2s; }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+            border-color: #00ff88;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4), inset 0 0 30px rgba(0, 255, 136, 0.05);
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            color: #00ff88;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card p {
+            color: #ddd;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Feature Icons */
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: spin 4s linear infinite;
+            display: inline-block;
+        }
+
+        .card:hover .feature-icon {
+            animation: bounce 0.6s ease-in-out;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* What We Do Section */
+        .what-we-do {
+            background: rgba(0, 255, 136, 0.05);
+            border: 2px solid rgba(0, 255, 136, 0.2);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 3rem 0;
+            animation: slideUp 0.8s ease-out 0.3s backwards;
+        }
+
+        .what-we-do h3 {
+            color: #00ff88;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .what-we-do ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .what-we-do li {
+            padding: 1rem;
+            background: rgba(0, 204, 255, 0.05);
+            border-left: 3px solid #00ccff;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            animation: fadeInItem 0.6s ease-out backwards;
+        }
+
+        @keyframes fadeInItem {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .what-we-do li:nth-child(1) { animation-delay: 0.4s; }
+        .what-we-do li:nth-child(2) { animation-delay: 0.5s; }
+        .what-we-do li:nth-child(3) { animation-delay: 0.6s; }
+        .what-we-do li:nth-child(4) { animation-delay: 0.7s; }
+        .what-we-do li:nth-child(5) { animation-delay: 0.8s; }
+
+        .what-we-do li:hover {
+            background: rgba(0, 204, 255, 0.1);
+            border-left-color: #00ff88;
+            transform: translateX(10px);
+            box-shadow: 0 0 15px rgba(0, 204, 255, 0.2);
+        }
+
+        .what-we-do li::before {
+            content: '✓ ';
+            color: #00ff88;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .stat {
+            animation: countUp 2s ease-out;
+            padding: 2rem;
+            background: rgba(0, 255, 136, 0.05);
+            border: 2px solid rgba(0, 255, 136, 0.2);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .stat:hover {
+            border-color: #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            transform: scale(1.05);
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #00ccff;
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: rgba(0, 255, 136, 0.05);
+            border-radius: 10px;
+            animation: slideUp 0.8s ease-out 0.5s backwards;
+        }
+
+        .cta-section h2 {
+            color: #00ff88;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            color: #0f0c29;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 255, 136, 0.6); }
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.8);
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        .cta-button:hover::after {
+            left: 100%;
+        }
+
+        /* Technologies Section */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tech-item {
+            background: rgba(0, 204, 255, 0.05);
+            border: 2px solid rgba(0, 204, 255, 0.3);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: slideUp 0.6s ease-out backwards;
+        }
+
+        .tech-item:nth-child(1) { animation-delay: 0.2s; }
+        .tech-item:nth-child(2) { animation-delay: 0.3s; }
+        .tech-item:nth-child(3) { animation-delay: 0.4s; }
+        .tech-item:nth-child(4) { animation-delay: 0.5s; }
+        .tech-item:nth-child(5) { animation-delay: 0.6s; }
+        .tech-item:nth-child(6) { animation-delay: 0.7s; }
+
+        .tech-item:hover {
+            border-color: #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .tech-item-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-item-name {
+            color: #00ccff;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid rgba(0, 255, 136, 0.2);
+            margin-top: 4rem;
+            color: #888;
+            animation: slideUp 0.8s ease-out 0.6s backwards;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        footer a {
+            color: #00ccff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #00ff88;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { 
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+            }
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            .cards-grid { 
+                grid-template-columns: 1fr; 
+            }
+            nav { 
+                gap: 1rem;
+                flex-direction: column;
+            }
+            nav a {
+                width: 100%;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f0c29;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #00ff88;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00ccff;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <header>
+        <div class="shield-icon">🛡️</div>
+        <h1>CYBERFORGE</h1>
+        <p class="subtitle">Cybersecurity Tools Development Community</p>
+        <p class="tagline">Collaborate • Learn • Build • Secure</p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#what-we-do">What We Do</a>
+        <a href="#features">Features</a>
+        <a href="https://discord.gg/AsWSbdSvs" target="_blank">🎮 Join Discord</a>
+    </nav>
+
+    <div class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">Welcome to Cyberforge</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Join Our Community</h3>
+                    <p>A vibrant Discord community where cybersecurity enthusiasts, hackers, and programmers collaborate to create innovative security tools.</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Build Together</h3>
+                    <p>Work on exciting open-source projects with experienced developers in a supportive environment that encourages learning and growth.</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Share Knowledge</h3>
+                    <p>Exchange insights, techniques, and best practices in cybersecurity. Mentor newcomers and advance your skills with the community.</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Real Projects</h3>
+                    <p>Work on practical security tools, frameworks, and utilities that make a real impact in the cybersecurity world.</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🌟</div>
+                    <h3>Grow Your Skills</h3>
+                    <p>Whether you're a seasoned pro or just starting, find challenges and opportunities that match your skill level and interests.</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Make An Impact</h3>
+                    <p>Contribute to projects that matter, build tools that help others, and establish yourself in the cybersecurity community.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Do Section -->
+        <section id="what-we-do" class="what-we-do">
+            <h3>🎯 What We Do</h3>
+            <ul>
+                <li>Develop Security Tools - Build practical cybersecurity applications and utilities</li>
+                <li>Share Knowledge - Exchange insights, techniques, and best practices</li>
+                <li>Collaborative Projects - Work together on open-source security tools</li>
+                <li>Learning & Growth - Mentor newcomers and advance your skills</li>
+                <li>Tool Repositories - Host and maintain various cybersecurity tools and scripts</li>
+            </ul>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features">
+            <h2 class="section-title">Our Focus Areas</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Encryption & Cryptography</h3>
+                    <p>Build advanced cryptography solutions for secure communications and data protection.</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Network Analysis</h3>
+                    <p>Develop utilities for network monitoring, packet analysis, and traffic inspection.</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Penetration Testing</h3>
+                    <p>Create frameworks for authorized security testing and vulnerability assessment.</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Security Monitoring</h3>
+                    <p>Monitor and detect vulnerabilities in real-time with advanced analytics.</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Malware Analysis</h3>
+                    <p>Conduct deep analysis of malware and develop tools for threat detection.</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Web Application Security</h3>
+                    <p>Identify and exploit web vulnerabilities for authorized testing purposes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <h2 class="section-title">Technologies We Use</h2>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <div class="tech-item-icon">🐍</div>
+                <div class="tech-item-name">Python</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-icon">⚙️</div>
+                <div class="tech-item-name">C++</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-icon">🦀</div>
+                <div class="tech-item-name">Rust</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-icon">📜</div>
+                <div class="tech-item-name">JavaScript</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-icon">🖥️</div>
+                <div class="tech-item-name">Assembly</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-icon">🔗</div>
+                <div class="tech-item-name">Node.js</div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <h2 class="section-title">By The Numbers</h2>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Community Members</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Active Projects</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Security Tools</div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Join Cyberforge?</h2>
+            <p style="color: #ccc; margin-bottom: 2rem; font-size: 1.1rem;">
+                Become part of a thriving community of cybersecurity professionals and enthusiasts
+            </p>
+            <a href="https://discord.gg/AsWSbdSvs" target="_blank" class="cta-button">
+                ✨ Join Discord Server →
+            </a>
+            <p style="color: #888; margin-top: 2rem; font-size: 0.95rem;">
+                Free • Open Source • Community-Driven
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Cyberforge Community. All rights reserved.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            Building secure tools for ethical cybersecurity professionals
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">
+            <a href="https://discord.gg/AsWSbdSvs">Discord</a> • 
+            <a href="https://github.com/cyberforge45-spec">GitHub</a>
+        </p>
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: #666;">
+            ⚖️ All tools are intended for educational purposes and authorized security testing only
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }
+            });
+        });
+
+        // Particle effect on click
+        document.addEventListener('click', (e) => {
+            // Skip if clicking buttons
+            if (e.target.closest('.cta-button') || e.target.closest('nav a')) return;
+            
+            createParticle(e.clientX, e.clientY);
+        });
+
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.width = '10px';
+            particle.style.height = '10px';
+            particle.style.background = '#00ff88';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.boxShadow = '0 0 10px #00ff88';
+            particle.style.animation = 'particleFloat 1s ease-out forwards';
+            
+            // Add style if not already added
+            if (!document.querySelector('style[data-particles]')) {
+                const style = document.createElement('style');
+                style.setAttribute('data-particles', 'true');
+                style.textContent = `
+                    @keyframes particleFloat {
+                        to {
+                            transform: translateY(-100px);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 1000);
+        }
+
+        // Animate stats numbers on scroll into view
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                    animateCounter(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-number').forEach(stat => {
+            observer.observe(stat);
+        });
+
+        function animateCounter(element) {
+            const text = element.textContent;
+            const number = parseInt(text);
+            const isPlus = text.includes('+');
+            const duration = 2000;
+            const steps = 60;
+            const increment = number / steps;
+            
+            let current = 0;
+            const interval = duration / steps;
+
+            const counter = setInterval(() => {
+                current += increment;
+                if (current >= number) {
+                    element.textContent = number + (isPlus ? '+' : '');
+                    clearInterval(counter);
+                } else {
+                    element.textContent = Math.floor(current) + (isPlus ? '+' : '');
+                }
+            }, interval);
+        }
+
+        // Scroll animations for cards
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card').forEach(card => {
+            cardObserver.observe(card);
+        });
+
+        // Mouse tracking for subtle background effect
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 2 - 1;
+            const y = (e.clientY / window.innerHeight) * 2 - 1;
+            
+            const parallax = document.querySelector('.animated-bg');
+            if (parallax) {
+                parallax.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+            }
+        });
+
+        console.log('🛡️ Cyberforge loaded successfully! Ready to secure the web.');
+    </script>
+</body>
+</html>
