@@ -54,7 +54,7 @@ If you witness or experience a violation:
 2. **Report to Moderators**
    - Use Discord's report feature
    - Direct message a moderator
-   - Email: conduct@cyberforge.community
+   - Email: cyberforge45@aol.com
 
 3. **What Happens Next**
    - Investigation by moderators
@@ -175,7 +175,7 @@ This Code of Conduct is inspired by:
 ## Questions?
 
 - **Discord** - Ask a moderator
-- **Email** - conduct@cyberforge.community
+- **Email** - cyberforge45@aol.com
 - **GitHub Issues** - Create a discussion
 
 ## Agreement
